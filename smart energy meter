@@ -1,0 +1,88 @@
+import datetime
+
+def meter_readings(month):
+         while True:
+             try:
+                 units=int(input(f"\nEnter units consumed in {months[month]}: "))
+                 if units<=0:
+                    print("Units must be greater than 0..try again!")
+                    continue
+             except ValueError:
+                   print("ValueError: Enter units in digits!")  
+                   continue 
+             if units<=100:
+                 bill=units*1.5
+             elif units<=200:
+                 bill=units*2.5
+             else:
+                 bill=units*4
+             
+             now=datetime.datetime.now()
+             timestamp=now.strftime("%d-%m-%Y %H:%M:%S")
+             
+             print(f"Date & time: {timestamp}")
+             print(f"{months[month]} bill= ₹{bill}")
+             return units,bill,timestamp
+    
+    
+def view_monthly_bills(data):
+    if not data:
+        print("No bills exists..first Enter bills!")
+        return
+    print("\n---MONTHLY BILLS---")
+    print("___________________")
+    for month,info in data.items():
+        print(f"{month}| {info['timestamp']}: ")
+        print(f"      units:{info['units']}KWh")
+        print(f"      bill: ₹{info['monthly_bills']}")
+        
+         
+def avg_total_bill(data):
+    if not data:
+        print("No bills exists!")
+        return
+    total_bill=sum(info['monthly_bills'] for info in data.values())
+    avg_bill=total_bill/len(data)
+    print(f"\nTOTAL BILL= ₹{total_bill}")
+    print(f"AVERAGE MONTHLY BILL= ₹{round(avg_bill,3)}")  
+       
+print("***SMART ENERGY METER***")
+print("_________________________________") 
+months=['January','February','March','April','May','June','July',
+'August','September','October','November','December']
+
+
+
+meter_data={}
+while True:
+    print("\n--DESCRIPTION:")
+    print("1.ENTER METER READINGS")
+    print("2.VIEW MONTHLY BILLS")
+    print("3.VIEW TOTAL/AVERAGE")
+    print("4.EXIT")
+    try:
+       choice=int(input("Enter a choice: "))
+    except ValueError:
+        print("ValueError: Enter digits only!")
+        continue  
+    if choice==1:
+        for i in range(len(months)):
+             unit,bill,timestamp=meter_readings(i)
+             meter_data[months[i]]={"units":unit,"monthly_bills":bill,"timestamp":timestamp}
+             
+             if i<len(months)-1:
+                  again=input(f"\nDo you want to calculate for next {months[i+1]},(Y/N): ").lower()
+                  if again!='y':
+                      break
+             else:
+                 print("\nAll months completed successfully!")
+                          
+    elif choice==2:
+        view_monthly_bills(meter_data)
+    elif choice==3:
+        avg_total_bill(meter_data)
+    elif choice==4:
+        print("Thank you!")
+        break
+    else:
+        print("Invalid choice...try again!")

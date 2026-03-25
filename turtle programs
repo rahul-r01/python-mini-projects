@@ -1,0 +1,257 @@
+#turtle programs
+
+'''from turtle import Turtle,Screen
+s=Screen()
+t=Turtle()
+t.shape("turtle")
+t.pensize(10)
+t.penup()
+t.goto(-400,600)
+t.pendown()
+t.pencolor("red")
+for i in range(3):
+    t.forward(200)
+    t.lt(120)
+t.penup()
+t.goto(200,600)
+t.pendown()
+t.pencolor("green")
+for i in range(4):
+    t.forward(200)
+    t.lt(90)  
+t.penup()    
+t.goto(-400,200)
+t.pendown()
+t.pencolor("blue")
+t.forward(300)
+t.lt(90)
+t.forward(200)
+t.lt(90)
+t.forward(300)
+t.lt(90)
+t.forward(200)
+t.penup()
+t.goto(100,-300)
+t.pendown()
+t.lt(90)
+t.pencolor("brown")
+for i in range(5):
+    t.forward(300)
+    t.lt(72)
+t.penup()
+t.goto(-400,-500)
+t.pendown()
+t.pencolor("pink")
+for i in range(6):
+    t.forward(200)
+    t.lt(60)   
+s.mainloop()    
+'''
+    
+
+
+'''from turtle import Turtle,Screen
+s=Screen()
+a=Turtle()
+def up():
+    a.setheading(90)
+    a.forward(20)
+def down():
+    a.setheading(270)
+    a.forward(20)
+def right():
+    a.setheading(0)
+    a.forward(20)
+def left():
+    a.setheading(180)
+    a.forward(20)
+def clear_screen():
+    a.clear()
+    a.penup()
+    a.home()
+    a.pendown()    
+s.listen()
+s.onkey(fun=up,key="u")
+s.onkey(fun=down,key="d")
+s.onkey(fun=right,key="r")
+s.onkey(fun=left,key="l")
+s.onkey(fun=clear_screen,key="c")
+s.mainloop()'''
+
+
+'''import turtle
+import random 
+from turtle import Turtle,Screen
+s=Screen()
+t=Turtle()
+t.speed(10)
+t.shape("turtle")
+t.penup()
+turtle.colormode(255)
+for i in range(50):
+    r=random.randint(0,255)
+    g=random.randint(0,255)
+    b=random.randint(0,255)
+    t.pencolor(r,g,b)
+    t.goto(random.randint(-200,200),random.randint(-200,200))
+    t.dot(50)
+s.mainloop()    
+'''
+'''
+import turtle
+import random
+from turtle import Turtle,Screen
+s=Screen()
+t=Turtle()
+t.shape("turtle")
+t.speed(0)
+turtle.colormode(255)
+while True:
+    r=random.randint(0,255)
+    g=random.randint(0,255)
+    b=random.randint(0,255)
+    t.pencolor(r,g,b)
+    t.circle(300)
+    t.lt(5)
+    if t.heading()==0:
+        break
+s.mainloop()        
+'''
+
+from turtle import Turtle,Screen
+s=Screen()
+a=Turtle()
+a.shape("turtle")
+a.speed(0)
+a.color("red","yellow")
+a.begin_fill()
+while True:
+    a.forward(400)
+    a.lt(170)
+    if a.heading()==0:
+           break
+a.end_fill()
+s.mainloop()        
+
+'''
+import turtle
+import random
+from turtle import Turtle,Screen
+s=Screen()
+t=Turtle()
+t.shape("turtle")
+t.speed(6)
+t.pensize(10)
+turtle.colormode(255)
+for i in range(100):
+    r=random.randint(0,255)
+    g=random.randint(0,255)
+    b=random.randint(0,255)
+    t.setheading(random.randrange(0,360,90))
+    t.pencolor(r,g,b)
+    t.forward(30)
+s.mainloop()   
+''' 
+'''
+import random
+from turtle import Turtle,Screen
+s=Screen()
+t=Turtle()
+colors=["red","blue","orange","pink","green",
+"yellow","brown","grey"]
+for i in range(3,9):
+    angles=360/i
+    t.pencolor(random.choice(colors))
+    for j in range(i):
+        t.forward(100)
+        t.rt(angles)
+s.mainloop()        
+'''
+'''
+from turtle import Turtle,Screen
+s=Screen()
+t=Turtle()
+def dis():
+    t.forward(10)
+    t.penup()
+    t.forward(10)
+    t.pendown()
+for i in range(10):
+    t.pencolor("red")
+    dis()
+    t.pencolor("blue")
+    dis()
+s.mainloop()  
+'''
+'''
+from turtle import Turtle,Screen
+s=Screen()
+a=Turtle()
+a.shape("turtle")
+a.speed(6)
+a.color("green","orange")
+a.begin_fill()
+a.circle(200)
+a.end_fill()
+a.rt(90)
+a.penup()
+a.forward(100)
+a.pendown()
+a.begin_fill()
+a.width(10)
+a.circle(100)
+a.end_fill()
+a.penup()
+a.goto(-200,-100)
+a.pendown()
+a.hideturtle()
+a.circle(50)
+s.mainloop()
+'''
+
+
+
+
+'''
+import turtle
+turtle.shape("turtle")
+turtle.color("green")
+turtle.speed(6)
+turtle.forward(200)
+turtle.left(72)
+turtle.forward(200)
+turtle.left(72)
+turtle.forward(200)
+turtle.left(72)
+turtle.forward(200)
+turtle.left(72)
+turtle.forward(200)
+turtle.done()
+'''
+'''
+import turtle
+turtle.shape("turtle")
+turtle.color("blue")
+turtle.speed(6)
+turtle.forward(300)
+turtle.left(120)
+turtle.forward(300)
+turtle.left(120)
+turtle.forward(300)
+turtle.done()
+'''
+'''
+import turtle
+turtle.getscreen()
+turtle.shape("turtle")
+turtle.color("red")
+turtle.speed(10)
+turtle.forward(300)
+turtle.left(90)
+turtle.forward(300)
+turtle.left(90)
+turtle.forward(300)
+turtle.left(90)
+turtle.forward(300)
+turtle.done()
+'''

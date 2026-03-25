@@ -1,0 +1,44 @@
+import random
+EASY_LEVEL_ATTEMPTS=10
+HARD_LEVEL_ATTEMPTS=5
+def level_difficulties(level):
+    if level==1:
+        return EASY_LEVEL_ATTEMPTS
+    elif level==2:
+        return HARD_LEVEL_ATTEMPTS
+    else:
+        return 
+def check_answer(guessed_num,answer,attempts):
+    if guessed_num>answer:
+        print("your guess is too high")
+        return attempts-1
+    elif guessed_num<answer:
+        print("your guess is too low")
+        return attempts-1 
+    else:
+        print(f"your guess is right!... The answer was {answer}")
+print("*****GUES THE NUMBER GAME*****") 
+print("______________________________")      
+def game():
+    range_1=int(input("Enter a number to guess b/w the range: "))
+    print(f"\nLet me think of number between 1 to {range_1}!")
+    answer=random.randint(1,range_1)
+    while True:
+        level=int(input("\nchoose level of difficulties...\n 1.EASY \n 2.HARD\n Enter your choice: "))
+        attempts=level_difficulties(level)
+        if attempts!=EASY_LEVEL_ATTEMPTS and attempts!=HARD_LEVEL_ATTEMPTS:
+             print("\nyou have entered wrong difficulty... play again!\n enter a valid choice: ")
+        else:
+            break     
+    guessed_num=0
+    while guessed_num!=answer:
+        print(f"\nyou have {attempts} attempts to guess a number")
+        guessed_num=int(input("Guess a number: "))
+        attempts=check_answer(guessed_num,answer,attempts)
+        if attempts==0:
+            print("you are out of guesses... you lose!")
+            return 
+        elif guessed_num!=answer:
+            print("Guess again")
+            
+game()

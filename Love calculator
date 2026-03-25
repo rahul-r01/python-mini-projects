@@ -1,0 +1,22 @@
+print("*******LOVE CALCULATOR*******")
+print("_____________________________")
+name_1=input("enter name: ")
+name_2=input("enter his/her name: ")
+combine_name=(name_1+name_2).lower()
+t=combine_name.count("t")
+r=combine_name.count("r")
+u=combine_name.count("u")
+e=combine_name.count("e")
+l=combine_name.count("l")
+o=combine_name.count("o")
+v=combine_name.count("v")
+e=combine_name.count("e")
+true=t+r+u+e
+love=l+o+v+e
+love_score=int(str(true)+str(love))
+if love_score>60 and love_score<90:
+    print(f"\nyour love score is {love_score} & beautiful bond's!")
+elif love_score>10 and love_score<50:
+    print (f"\nyour score is {love_score} & happy together!")
+else:
+    print(f"\nyour love score is {love_score}")

@@ -1,0 +1,31 @@
+import os
+def auction_winner(bidders_data):
+    highest_bid=0
+    winner=""
+    for bidder in bidders_data:
+        bid_amount=bidders_data[bidder]
+        if bid_amount>highest_bid:
+            highest_bid=bid_amount
+            winner=bidder
+    print(f"\nHere list of auction participants:\n {bidders_data}")
+    print(f"\nAuction winner is {winner} with bid amount is  {highest_bid}")     
+bidder_details={}
+auction_end=False
+print("***WELCOME TO SILENT AUCTION PROGRAM***")
+print("_______________________________________")
+while not auction_end:
+    bidder_name=input("enter your name: ")
+    try:
+       bid_amount=int(input("enter your bid amount: "))
+    except ValueError:
+        print("\nplease enter a valid amount!")
+        continue
+    bidder_details[bidder_name]=bid_amount
+    more_bidders=input("\nAre there more bitters?.type 'yes' or 'no': ")
+    if more_bidders=='no':
+        auction_end=True
+        auction_winner(bidder_details)
+    elif more_bidders=='yes':
+        os.system('cls')
+    else:
+        print("\nplease enter a (Y/N)!")

@@ -1,0 +1,43 @@
+import random 
+print("*********HANGMAN GAME*********")
+print("______________________________")
+word_list=["apple","lion","tiger"]
+while True:
+    chosen_word=random.choice(word_list)
+    #print(chosen_word)
+    guessed_letters=[]
+    display=[]
+    lives=6
+    for i in range(len(chosen_word)):
+          display+='_'
+    print(" ".join(display))
+    game_over=False
+    while not game_over:
+          guessed_word=input("\nguess a letter: ").lower()
+          if len(guessed_word)!=1:
+              print("please enter a single alphabet!")
+              continue
+          if guessed_word in guessed_letters:
+              print("you already guessed this letter!")
+              continue
+          guessed_letters.append(guessed_word)    
+          if guessed_word in chosen_word:
+             for position in range(len(chosen_word)):
+                letter=chosen_word[position]
+                if letter==guessed_word:
+                    display[position]=letter
+          else:       
+              lives-=1
+              print("wrong guess! lives left:",lives)
+          print(" ".join(display))  
+          if lives==0:
+                print("\nYOU LOSE THE GAME!")
+                print(f"THE WORD WAS: {chosen_word}")
+                game_over=True
+          if '_' not in display:
+               print("\nYOU WON THE GAME!")
+               game_over=True
+    play_again=input("\nDo you want to play again(Y/N): ").lower()
+    if play_again!='y':
+         print("\nTHANK YOU FOR PLAYING!")
+         break

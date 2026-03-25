@@ -1,0 +1,81 @@
+import datetime
+print("***SOLAR POWER MONITORING SYSTEM***")
+print("___________________________________")
+
+energy_list=[]
+time_list=[]
+
+def get_readings():
+   while True: 
+      try:
+          v=float(input("\nEnter a voltage: "))
+          i=float(input("Enter a current: "))
+          t=int(input("Enter operating time(hours): "))
+          if v<=0 or i<=0 or t<=0:
+              print("Values must be greater than 0..try again!")
+              continue
+      except ValueError:
+          print("ValueError: Enter numeric values only!") 
+          continue
+      power=v*i
+      energy=(power*t)/1000
+      
+      now=datetime.datetime.now()
+      timestamp=now.strftime("%d-%m-%Y %H:%M:%S")
+      
+      print("\nSUMMARY: ")
+      print(f"Date & time: {timestamp}")
+      print(f"voltage= {v}V, current= {i}A")
+      print(f"power= {power}W, Energy= {energy}KWh")   
+      
+      return energy,timestamp    
+
+def view_daily_summary(energies):
+    if not energies:
+        print("No readings available..please enter readings first!")
+        return
+    total=sum(energies)    
+    print(f"\n***DAILY SUMMARY***")
+    print(f"Total readings taken: {len(energies)}")
+    print(f"Total daily energy: {round(total,3)}KWh")
+    print(f"Maximum Energy in day: {max(energies)}")
+    print(f"Minimum Energy in day: {min(energies)}")
+    print(f"Average Energy in day: {round(total/len(energies),3)}")
+    print("Thank you!")
+def show_all_energies():
+    if not energy_list:
+        print("No readings available...please Enter readings first!")
+        return
+    print("\n---ALL ENERGIES---")
+    for i in range(len(energy_list)):
+        print(f"{time_list[i]}")
+        print(f"   Energy= {energy_list[i]} KWh")
+        
+
+while True:
+    print("\nDESCRIPTION: ")
+    print("1.ENTER READINGS")
+    print("2.VIEW DAILY SUMMARY")
+    print("3.SHOW ALL ENERGIES")
+    print("4.EXIT")
+    try:
+       choice=int(input("Enter a choice: "))
+    except ValueError:
+        print("ValueError: Enter digits only!")
+        continue
+    if choice==1:
+        energy,timestamp=get_readings()
+        energy_list.append(energy)
+        time_list.append(timestamp)
+        again=input("\nDo you Enter new readings(Y/N): ").lower()
+        if again!='y':
+            continue
+    elif choice==2:
+        view_daily_summary(energy_list)
+    elif choice==3:
+        show_all_energies()         
+    elif choice==4:
+        print("Exiting...thank you!")
+        break
+    else:
+        print("Invalid choice...try again!")

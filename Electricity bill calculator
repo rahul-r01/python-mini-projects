@@ -1,0 +1,35 @@
+print("***ELECTRICITY BILL CALCULATOR***")
+print("_________________________________") 
+months=['January','February','March','April','May','June','July',
+'August','September','October','November','December']
+total_bill=0
+monthly_bills=[]
+for month in months:
+    while True:
+        try:
+            units=int(input(f"Enter units consumed in {month}: "))
+            if units<=0:
+                print("Units must be greater than 0..try agian!")
+                continue
+        except ValueError:
+            print("ValueError: Enter units in digits!")  
+            continue 
+        if units<=100:
+            bill=units*1.5
+        elif units<=200:
+            bill=units*2.5
+        else:
+            bill=units*4
+        total_bill+=bill
+        monthly_bills.append(bill) 
+        print(f"{month} bill= ₹{bill}")
+        break
+average_bill=total_bill/12
+ 
+print("---MONTHLY BILLS---")
+for i in range(len(months)):
+    print(f"{months[i]} bill: ₹{monthly_bills[i]}")
+print("___________________________________________")  
+
+print(f"TOTAL ANNUAL BILL= ₹{total_bill}")
+print(f"AVERAGE MONTHLY BILL= ₹{round(average_bill,2)}")
